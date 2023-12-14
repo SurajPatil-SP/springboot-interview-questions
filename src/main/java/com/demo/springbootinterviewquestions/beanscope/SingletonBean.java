@@ -2,6 +2,7 @@ package com.demo.springbootinterviewquestions.beanscope;
 
 import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Lookup;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
@@ -22,7 +23,13 @@ public class SingletonBean {
     public ProtoTypeBean getProtoTypeBean() {
 //        return protoTypeBean;
 //        return context.getBean(ProtoTypeBean.class);
-        return objectFactory.getObject();
+//        return objectFactory.getObject();
+        return getInstance();
+    }
+
+    @Lookup
+    public ProtoTypeBean getInstance(){
+        return null;
     }
 
 }
