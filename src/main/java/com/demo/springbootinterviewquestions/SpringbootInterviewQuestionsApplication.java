@@ -2,6 +2,7 @@ package com.demo.springbootinterviewquestions;
 
 import com.demo.springbootinterviewquestions.beanscope.BeanScopeTestService;
 import com.demo.springbootinterviewquestions.beanscope.CustomThreadScope;
+import com.demo.springbootinterviewquestions.beanscope.SingletonBean;
 import com.demo.springbootinterviewquestions.common.Volunteer;
 import org.springframework.beans.factory.config.Scope;
 import org.springframework.boot.SpringApplication;
@@ -14,7 +15,11 @@ public class SpringbootInterviewQuestionsApplication {
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context = SpringApplication.run(SpringbootInterviewQuestionsApplication.class, args);
 
-		Scope scope = new CustomThreadScope();
+        SingletonBean sb1 = context.getBean(SingletonBean.class);
+        SingletonBean sb2 = context.getBean(SingletonBean.class);
+        System.out.println(sb1.getProtoTypeBean().hashCode()+" - "+sb2.getProtoTypeBean().hashCode());
+
+		/*Scope scope = new CustomThreadScope();
         context.getBeanFactory().registerScope("threadScope", scope);
 
         Runnable childThread = () -> {
@@ -32,6 +37,7 @@ public class SpringbootInterviewQuestionsApplication {
 		BeanScopeTestService service1=context.getBean(BeanScopeTestService.class);
         BeanScopeTestService service2=context.getBean(BeanScopeTestService.class);
         BeanScopeTestService service3=context.getBean(BeanScopeTestService.class);
+*/
 	}
 
 }
