@@ -4,6 +4,7 @@ import com.demo.springbootinterviewquestions.beanscope.BeanScopeTestService;
 import com.demo.springbootinterviewquestions.beanscope.CustomThreadScope;
 import com.demo.springbootinterviewquestions.beanscope.SingletonBean;
 import com.demo.springbootinterviewquestions.common.Volunteer;
+import com.demo.springbootinterviewquestions.dependencyinjection.OrderService;
 import org.springframework.beans.factory.config.Scope;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,6 +15,8 @@ public class SpringbootInterviewQuestionsApplication {
 
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context = SpringApplication.run(SpringbootInterviewQuestionsApplication.class, args);
+        OrderService service = context.getBean("orderService", OrderService.class);
+        service.test();
 
         SingletonBean sb1 = context.getBean(SingletonBean.class);
         SingletonBean sb2 = context.getBean(SingletonBean.class);
