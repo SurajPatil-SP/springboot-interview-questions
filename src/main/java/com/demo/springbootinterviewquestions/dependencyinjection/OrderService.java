@@ -5,15 +5,22 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class OrderService {
+    private RestClientService restClientService;
+
+    @Autowired
+    public OrderService(RestClientService restClientService) {
+        this.restClientService = restClientService;
+    }
+
     //Field level DI
 //    @Autowired
     private OrderRepository orderRepository;
 
     //Setter DI
-    @Autowired
-    public void setOrderRepository(OrderRepository orderRepository) {
-        this.orderRepository = orderRepository;
-    }
+//    @Autowired
+//    public void setOrderRepository(OrderRepository orderRepository) {
+//        this.orderRepository = orderRepository;
+//    }
 
     //Constructor DI
 //    @Autowired
