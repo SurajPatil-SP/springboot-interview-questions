@@ -6,17 +6,28 @@ import com.demo.springbootinterviewquestions.beanscope.SingletonBean;
 import com.demo.springbootinterviewquestions.common.Volunteer;
 import com.demo.springbootinterviewquestions.dependencyinjection.OrderService;
 import jakarta.annotation.PostConstruct;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.config.Scope;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.core.env.Environment;
 
 @SpringBootApplication
 public class SpringbootInterviewQuestionsApplication implements CommandLineRunner {
 
+    @Value("${discount.offer.price}")
+    private int discountedOfferPrice;
+
+    @Autowired
+    private Environment environment;
+
     @Override
     public void run(String... args) throws Exception {
+        System.out.println("DISCOUNT PRICE Using @Value :  " + discountedOfferPrice);
+        System.out.println("DISCOUNT PRICE Using Environment Object :  " + environment.getProperty("discount.offer.price"));
         System.out.println("CommandLineRunner run() method ....... executed");
     }
 
