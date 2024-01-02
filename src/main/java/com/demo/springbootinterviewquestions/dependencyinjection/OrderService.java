@@ -1,6 +1,7 @@
 package com.demo.springbootinterviewquestions.dependencyinjection;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -8,9 +9,14 @@ public class OrderService {
     private RestClientService restClientService;
 
     @Autowired
-    public OrderService(RestClientService restClientService) {
+    @Lazy
+    public void setRestClientService(RestClientService restClientService) {
         this.restClientService = restClientService;
     }
+//    @Autowired
+//    public OrderService(RestClientService restClientService) {
+//        this.restClientService = restClientService;
+//    }
 
     //Field level DI
 //    @Autowired

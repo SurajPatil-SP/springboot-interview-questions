@@ -16,7 +16,7 @@ public class SpringbootInterviewQuestionsApplication {
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context = SpringApplication.run(SpringbootInterviewQuestionsApplication.class, args);
         OrderService service = context.getBean("orderService", OrderService.class);
-        service.test();
+//        service.test();
 
         SingletonBean sb1 = context.getBean(SingletonBean.class);
         SingletonBean sb2 = context.getBean(SingletonBean.class);
